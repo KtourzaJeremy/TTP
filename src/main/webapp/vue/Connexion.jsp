@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
-
+<form name="Connexion" action="../ConnexionServlet"
+style="width:50%;margin:auto;background-color:#c1d9fc;padding-bottom:15px;" method="post">
+                 
+        <h2 style="text-align:center;color:white;background-color:#6683b1;">Espace Client</h2>
+        <p style="text-align:center;">Nom : <input type="text" name="login" /></p>
+        <p style="text-align:center;">Prénom : <input type="password" name="pwd" /></p>
+             
+        <p style="text-align:center;width:50%;margin:auto;"><input type="submit" name="Valider" value="Valider"/></p>
+         
+    </form>
 </body>
 </html>
