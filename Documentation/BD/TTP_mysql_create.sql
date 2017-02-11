@@ -36,3 +36,50 @@ ALTER TABLE `Participants` ADD CONSTRAINT `Participants_fk0` FOREIGN KEY (`IdEvt
 
 ALTER TABLE `Participants` ADD CONSTRAINT `Participants_fk1` FOREIGN KEY (`IdUser`) REFERENCES `User`(`IdUser`);
 
+
+
+vrai script
+
+drop table User_ttp ;
+drop table Event_ttp;
+drop table Participants;
+
+CREATE TABLE User_ttp
+ (
+	IdUser INT Primary Key identity,
+	MailUser varchar NOT NULL,
+	MdpUser varchar NOT NULL,
+	NomUser varchar NOT NULL UNIQUE,
+	PrenomUser varchar,
+	AgeUser INT,
+	GenreUser varchar,
+	TelUser varchar,
+	PhotoUser varchar,
+	
+);
+
+CREATE TABLE Event_ttp (
+	IdEvt  INT primary key identity,
+	 TitreEvt  varchar NOT NULL,
+	 LocEvt  varchar NOT NULL,
+	 DateEvt  DATE NOT NULL,
+	 PhotoEvt  varchar,
+	 EtatEvt  BIT NOT NULL,
+	 NbMaxParticipants  INT,
+
+);
+
+CREATE TABLE  Participants  (
+	 IdEvt  INT Not Null,
+	 IdUser  INT NOT NULL ,
+	 CONSTRAINT pk_ID PRIMARY KEY (IdEvt,IdUser)
+);
+
+ALTER TABLE Participants
+ADD Foreign KEY (IdUser)
+References User_ttp(IdUser)
+
+ALTER TABLE Participants
+ADD Foreign KEY (IdEvt)
+References Event_ttp(IdEvt)
+
