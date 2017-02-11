@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="TTPBD.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="TTPBDTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TTPBD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TTPBDContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="TTPBD.User" />
+          <EntitySet Name="EventSet" EntityType="TTPBD.Event" />
+          <EntitySet Name="ParticipantSet" EntityType="TTPBD.Participant" />
+          <AssociationSet Name="UserParticipant" Association="TTPBD.UserParticipant">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Participant" EntitySet="ParticipantSet" />
+          </AssociationSet>
+          <AssociationSet Name="ParticipantEvent" Association="TTPBD.ParticipantEvent">
+            <End Role="Participant" EntitySet="ParticipantSet" />
+            <End Role="Event" EntitySet="EventSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" />
+          <Property Name="prénom" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="mdp" Type="String" Nullable="false" />
+          <Property Name="Age" Type="String" Nullable="false" />
+          <Property Name="Genre" Type="String" Nullable="false" />
+          <Property Name="Tel" Type="String" Nullable="false" />
+          <Property Name="PhotoUser" Type="String" Nullable="false" />
+          <NavigationProperty Name="Participant" Relationship="TTPBD.UserParticipant" FromRole="User" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="idAdmin" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Localisation" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="Etat" Type="String" Nullable="false" />
+          <Property Name="Nbparticipant" Type="String" Nullable="false" />
+          <Property Name="PhotoEvent" Type="String" Nullable="false" />
+          <Property Name="idAdmin" Type="String" Nullable="false" />
+          <NavigationProperty Name="Participant" Relationship="TTPBD.ParticipantEvent" FromRole="Event" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="idEvent" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idEvent" Type="String" Nullable="false" />
+          <Property Name="idUser" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="TTPBD.UserParticipant" FromRole="Participant" ToRole="User" />
+          <NavigationProperty Name="Event" Relationship="TTPBD.ParticipantEvent" FromRole="Participant" ToRole="Event" />
+        </EntityType>
+        <Association Name="UserParticipant">
+          <End Type="TTPBD.User" Role="User" Multiplicity="*" />
+          <End Type="TTPBD.Participant" Role="Participant" Multiplicity="*" />
+        </Association>
+        <Association Name="ParticipantEvent">
+          <End Type="TTPBD.Participant" Role="Participant" Multiplicity="*" />
+          <End Type="TTPBD.Event" Role="Event" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="TTPBD" />
+        <Alias Key="Target" Value="TTPBD.Store" />
+        <EntityContainerMapping CdmEntityContainer="TTPBDContainer" StorageEntityContainer="TTPBDTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrouveTonPote", "TrouveTonPote\TrouveTonPote.csproj", "{651234EC-99FE-45FB-A051-69E0E140B258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrouveTonPote.Tests", "TrouveTonPote.Tests\TrouveTonPote.Tests.csproj", "{EC422E3A-B8B7-4188-8960-6FA22921F29B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{651234EC-99FE-45FB-A051-69E0E140B258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651234EC-99FE-45FB-A051-69E0E140B258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651234EC-99FE-45FB-A051-69E0E140B258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651234EC-99FE-45FB-A051-69E0E140B258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC422E3A-B8B7-4188-8960-6FA22921F29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC422E3A-B8B7-4188-8960-6FA22921F29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC422E3A-B8B7-4188-8960-6FA22921F29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC422E3A-B8B7-4188-8960-6FA22921F29B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
