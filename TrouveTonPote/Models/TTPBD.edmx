@@ -4,103 +4,230 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="TTPBD.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="TTPBDTargetContainer" >
+      <Schema Namespace="TTPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Event_ttp">
+          <Key>
+            <PropertyRef Name="IdEvt" />
+            <PropertyRef Name="UserNameAdmin" />
+          </Key>
+          <Property Name="IdEvt" Type="int" Nullable="false" />
+          <Property Name="TitreEvt" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="LocEvt" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DateEvt" Type="date" Nullable="false" />
+          <Property Name="PhotoEvt" Type="varchar" MaxLength="200" />
+          <Property Name="EtatEvt" Type="bit" Nullable="false" />
+          <Property Name="NbMaxParticipants" Type="int" />
+          <Property Name="UserNameAdmin" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="IdEvt" />
+            <PropertyRef Name="UserNamePart" />
+          </Key>
+          <Property Name="IdEvt" Type="int" Nullable="false" />
+          <Property Name="UserNamePart" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_ttp">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MailUser" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MdpUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrenomUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgeUser" Type="int" />
+          <Property Name="GenreUser" Type="varchar" MaxLength="10" />
+          <Property Name="TelUser" Type="varchar" MaxLength="10" />
+          <Property Name="PhotoUser" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="fk_ADMIN">
+          <End Role="Event_ttp" Type="Self.Event_ttp" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event_ttp">
+              <PropertyRef Name="IdEvt" />
+              <PropertyRef Name="UserNameAdmin" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="IdEvt" />
+              <PropertyRef Name="UserNamePart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID">
+          <End Role="User_ttp" Type="Self.User_ttp" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_ttp">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="UserNamePart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTPModelStoreContainer">
+          <EntitySet Name="Event_ttp" EntityType="Self.Event_ttp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_ttp" EntityType="Self.User_ttp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_ADMIN" Association="Self.fk_ADMIN">
+            <End Role="Event_ttp" EntitySet="Event_ttp" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID" Association="Self.FK_ID">
+            <End Role="User_ttp" EntitySet="User_ttp" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TTPBD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="TTPBDContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UserSet" EntityType="TTPBD.User" />
-          <EntitySet Name="EventSet" EntityType="TTPBD.Event" />
-          <EntitySet Name="ParticipantSet" EntityType="TTPBD.Participant" />
-          <AssociationSet Name="UserParticipant" Association="TTPBD.UserParticipant">
-            <End Role="User" EntitySet="UserSet" />
-            <End Role="Participant" EntitySet="ParticipantSet" />
+      <Schema Namespace="TTPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Event_ttp">
+          <Key>
+            <PropertyRef Name="IdEvt" />
+            <PropertyRef Name="UserNameAdmin" />
+          </Key>
+          <Property Name="IdEvt" Type="Int32" Nullable="false" />
+          <Property Name="TitreEvt" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocEvt" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateEvt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PhotoEvt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EtatEvt" Type="Boolean" Nullable="false" />
+          <Property Name="NbMaxParticipants" Type="Int32" />
+          <Property Name="UserNameAdmin" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.fk_ADMIN" FromRole="Event_ttp" ToRole="Participants" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="IdEvt" />
+            <PropertyRef Name="UserNamePart" />
+          </Key>
+          <Property Name="IdEvt" Type="Int32" Nullable="false" />
+          <Property Name="UserNamePart" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Event_ttp" Relationship="Self.fk_ADMIN" FromRole="Participants" ToRole="Event_ttp" />
+          <NavigationProperty Name="User_ttp" Relationship="Self.FK_ID" FromRole="Participants" ToRole="User_ttp" />
+        </EntityType>
+        <EntityType Name="User_ttp">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MailUser" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MdpUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgeUser" Type="Int32" />
+          <Property Name="GenreUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TelUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.FK_ID" FromRole="User_ttp" ToRole="Participants" />
+        </EntityType>
+        <Association Name="fk_ADMIN">
+          <End Role="Event_ttp" Type="Self.Event_ttp" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event_ttp">
+              <PropertyRef Name="IdEvt" />
+              <PropertyRef Name="UserNameAdmin" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="IdEvt" />
+              <PropertyRef Name="UserNamePart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID">
+          <End Role="User_ttp" Type="Self.User_ttp" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_ttp">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="UserNamePart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Event_ttp" EntityType="Self.Event_ttp" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" />
+          <EntitySet Name="User_ttp" EntityType="Self.User_ttp" />
+          <AssociationSet Name="fk_ADMIN" Association="Self.fk_ADMIN">
+            <End Role="Event_ttp" EntitySet="Event_ttp" />
+            <End Role="Participants" EntitySet="Participants" />
           </AssociationSet>
-          <AssociationSet Name="ParticipantEvent" Association="TTPBD.ParticipantEvent">
-            <End Role="Participant" EntitySet="ParticipantSet" />
-            <End Role="Event" EntitySet="EventSet" />
+          <AssociationSet Name="FK_ID" Association="Self.FK_ID">
+            <End Role="User_ttp" EntitySet="User_ttp" />
+            <End Role="Participants" EntitySet="Participants" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom" Type="String" Nullable="false" />
-          <Property Name="prénom" Type="String" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" />
-          <Property Name="mdp" Type="String" Nullable="false" />
-          <Property Name="Age" Type="String" Nullable="false" />
-          <Property Name="Genre" Type="String" Nullable="false" />
-          <Property Name="Tel" Type="String" Nullable="false" />
-          <Property Name="PhotoUser" Type="String" Nullable="false" />
-          <NavigationProperty Name="Participant" Relationship="TTPBD.UserParticipant" FromRole="User" ToRole="Participant" />
-        </EntityType>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="idAdmin" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titre" Type="String" Nullable="false" />
-          <Property Name="Localisation" Type="String" Nullable="false" />
-          <Property Name="Date" Type="String" Nullable="false" />
-          <Property Name="Etat" Type="String" Nullable="false" />
-          <Property Name="Nbparticipant" Type="String" Nullable="false" />
-          <Property Name="PhotoEvent" Type="String" Nullable="false" />
-          <Property Name="idAdmin" Type="String" Nullable="false" />
-          <NavigationProperty Name="Participant" Relationship="TTPBD.ParticipantEvent" FromRole="Event" ToRole="Participant" />
-        </EntityType>
-        <EntityType Name="Participant">
-          <Key>
-            <PropertyRef Name="idEvent" />
-            <PropertyRef Name="idUser" />
-          </Key>
-          <Property Name="idEvent" Type="String" Nullable="false" />
-          <Property Name="idUser" Type="String" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="TTPBD.UserParticipant" FromRole="Participant" ToRole="User" />
-          <NavigationProperty Name="Event" Relationship="TTPBD.ParticipantEvent" FromRole="Participant" ToRole="Event" />
-        </EntityType>
-        <Association Name="UserParticipant">
-          <End Type="TTPBD.User" Role="User" Multiplicity="*" />
-          <End Type="TTPBD.Participant" Role="Participant" Multiplicity="*" />
-        </Association>
-        <Association Name="ParticipantEvent">
-          <End Type="TTPBD.Participant" Role="Participant" Multiplicity="*" />
-          <End Type="TTPBD.Event" Role="Event" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="TTPBD" />
-        <Alias Key="Target" Value="TTPBD.Store" />
-        <EntityContainerMapping CdmEntityContainer="TTPBDContainer" StorageEntityContainer="TTPBDTargetContainer">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TTPModelStoreContainer" CdmEntityContainer="TTPEntities">
+          <EntitySetMapping Name="Event_ttp">
+            <EntityTypeMapping TypeName="TTPModel.Event_ttp">
+              <MappingFragment StoreEntitySet="Event_ttp">
+                <ScalarProperty Name="IdEvt" ColumnName="IdEvt" />
+                <ScalarProperty Name="TitreEvt" ColumnName="TitreEvt" />
+                <ScalarProperty Name="LocEvt" ColumnName="LocEvt" />
+                <ScalarProperty Name="DateEvt" ColumnName="DateEvt" />
+                <ScalarProperty Name="PhotoEvt" ColumnName="PhotoEvt" />
+                <ScalarProperty Name="EtatEvt" ColumnName="EtatEvt" />
+                <ScalarProperty Name="NbMaxParticipants" ColumnName="NbMaxParticipants" />
+                <ScalarProperty Name="UserNameAdmin" ColumnName="UserNameAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="TTPModel.Participants">
+              <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="IdEvt" ColumnName="IdEvt" />
+                <ScalarProperty Name="UserNamePart" ColumnName="UserNamePart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_ttp">
+            <EntityTypeMapping TypeName="TTPModel.User_ttp">
+              <MappingFragment StoreEntitySet="User_ttp">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MailUser" ColumnName="MailUser" />
+                <ScalarProperty Name="MdpUser" ColumnName="MdpUser" />
+                <ScalarProperty Name="NomUser" ColumnName="NomUser" />
+                <ScalarProperty Name="PrenomUser" ColumnName="PrenomUser" />
+                <ScalarProperty Name="AgeUser" ColumnName="AgeUser" />
+                <ScalarProperty Name="GenreUser" ColumnName="GenreUser" />
+                <ScalarProperty Name="TelUser" ColumnName="TelUser" />
+                <ScalarProperty Name="PhotoUser" ColumnName="PhotoUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <edmx:Connection>
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </edmx:Connection>
-    <edmx:Options>
+    </Connection>
+    <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
       </DesignerInfoPropertySet>
-    </edmx:Options>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>

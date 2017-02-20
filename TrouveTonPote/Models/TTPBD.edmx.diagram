@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b9c2172e515d47e8882753acf949353e" Name="Diagram1" >
-        <EntityTypeShape EntityType="TTPBD.User" Width="1.5" PointX="1.25" PointY="0.5" />
-        <EntityTypeShape EntityType="TTPBD.Event" Width="1.5" PointX="7" PointY="0.625" />
-        <EntityTypeShape EntityType="TTPBD.Participant" Width="1.5" PointX="4.375" PointY="0.5" />
-        <AssociationConnector Association="TTPBD.UserParticipant" />
-        <AssociationConnector Association="TTPBD.ParticipantEvent" />
+      <Diagram DiagramId="b7f31efda3f54ef4b8dbfb33c36fec47" Name="Diagram1">
+        <EntityTypeShape EntityType="TTPModel.Event_ttp" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTPModel.Participants" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTPModel.User_ttp" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="TTPModel.fk_ADMIN" ManuallyRouted="false" />
+        <AssociationConnector Association="TTPModel.FK_ID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

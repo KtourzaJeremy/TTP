@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\Users\lara\Documents\Visual Studio 2015\Projects\TrouveTonPote\TrouveTonPote\Models\TTPBD.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\lara\Documents\Visual Studio 2015\Projects\TTPV2\TTPV2\Models\TTPBD.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.
