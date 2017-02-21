@@ -20,19 +20,19 @@
 
 ### Présentation des outils utilisés
  * __GitHub__
-	 * Git est un logiciel de contrôle de version, ce qui signifie qu'il gère les modifications d'un projet sans écraser n'importe quelle partie du projet.
+	 * Git est un logiciel de contrôle de version, ce qui signifie qu'il gère les modifications d'un projet sans écraser les anciennes parties du projet.
 
  * __Facebook Messenger__
-	  * Facebook Messager est l'application de message du géant américain Facebook et permet l'échange de message instantanée entre plusieurs personnes.
+	  * Facebook Messager est l'application de messagerie du géant américain Facebook et permet l'échange de message instantanée entre plusieurs personnes.
 
  * __Visual Studio 2015__
 	  * Visual Studio 2015 est un IDE de développement conçu par Microsoft .
 	  
  * __HTML & CSS__
-	  * HTML est un langage de balisage qui permet de structurer des pages HTML. Le CSS est un langage quant à lui qui permet la mise en forme de page HTML.
+	  * HTML est un langage de balisage qui permet de structurer des pages Web. Le CSS est un langage qui permet la mise en forme de page HTML.
 	  
  * __Bootstrap__
-	  * Boostrap est un framework du CSS et permet de faciliter la mise en forme de page HTML.
+	  * Boostrap est un framework de CSS et permet de faciliter la mise en forme de page HTML.
 	
  * __Mysql__
 	 * MySQL est un système de données de bases relationnelles.
@@ -63,6 +63,7 @@
 ### Organisation du travail
 * La plupart du travail sera fait à l'IUT
 * Dans les 2 semaines précédent la soutenance, des réunions seront organisés pendant les week-ends pour continuer le travail.
+* Face aux nombreuses difficultés que nous avons rencontré, nous avons du modifier notre organisation de travail. En effet, nous avons eu un temps assez restreint pour développer notre application. Les rôles définis au départ ont étés ajustés de manière à pouvoir fournir une application fonctionelle en respectant les délais. 
 * [Lien vers notre Trello](https://github.com/KtourzaJeremy/TTP/projects/1)
 
 ### Organisation confrontée à la réalité
