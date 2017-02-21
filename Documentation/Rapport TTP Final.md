@@ -73,20 +73,24 @@
 
 Dès le début du projet, notre organisation "sur le papier" s'est confrontée à la réalité: l'équipe n'était
 jamais réunie au complet pendant les 5 premières semaines !  
+
 De plus, il nous fallait travailler avec un outil non maitrisé, découvert au début du projet pour la totalité
 de l'équipe (Spring). Cet outil nous a demandé beacoup d'efforts de configuration, de paramètrage.
 Un projet type fourni par M. Boutour (même si disponible depuis le début du projet ) nous aurait permis
 de partir sur de meilleures bases, mais nous ne l'avons pas utilisé à temps (il ne restait plus que 2
 semaines).  
+
 Il était également difficile de se coordonner dans les tâches techniques, sans chef de projet avéré.
 Nous n'avons pas réussi à nous concentrer sur "un problème à la fois", et les équipes (Front, Back ou
 MOA) ont rapidement divergées vers des tâches variées, mais pas forcemment adaptées aux
 besoins les plus urgent du projet, et la plupart du temps sans concertation.  
+
 Enfin, il a été difficile de se retrouver pour travailler en semaine ou le week-end en fonction des
 emplois du temps de chacun: nous avions bien identifié ce problème et voulions effectuer le travail à
 l'IUT en majorité. Mais la présence d'un cours au début de la plupart des séances nous laissait peu de
 temps à consacrer au projet. Et le manque de coordination entre nos équipes rendait le peu de temps
 disponible, encore plus court.  
+
 Étant donné que 2 semaines avant la date de rendu du projet, nous n'avions toujours pas résolu ces
 problèmes, nous avons décidé de coder en C#, des membres de l'équipe étant déjà familiers avec ce
 langage et son environnement.
@@ -118,8 +122,8 @@ __Administrateur:__
 * Modifier / Supprimer toute annonce
 
 ## User Story
-_N.B: En raison de la redondance entre les User Story et les Besoins Utilisateurs, nous avons choisi
-de n'en présenter que quelques-uns pour exemple.  
+N.B: En raison de la redondance entre les User Story et les Besoins Utilisateurs, nous avons choisi
+de n'en présenter que quelques-uns pour exemple.
 
 __Utilisateur non-identifié:__
 * En tant qu'utilisateur, je veux avoir accès à la page d'accueil du site afin de le consulter.
