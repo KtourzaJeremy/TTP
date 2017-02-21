@@ -5,7 +5,7 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 
-namespace TTPV2.Models
+namespace TrouveTonPote.Models
 {
     public partial class TTPDBEntities : DbContext
     {
@@ -18,8 +18,6 @@ namespace TTPV2.Models
         public virtual DbSet<User_ttp> Users { get; set; }
         public virtual DbSet<Event_ttp> Events { get; set; }
         public virtual DbSet<Participants> Participants { get; set; }
-
-      
 
     }
 

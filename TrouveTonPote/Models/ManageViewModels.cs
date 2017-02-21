@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace TTPV2.Models
+namespace TrouveTonPote.Models
 {
     public class IndexViewModel
     {

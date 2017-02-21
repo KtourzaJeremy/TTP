@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TTPV2.Controllers
+namespace TrouveTonPote.Controllers
 {
     public class UserSessionController : Controller
     {

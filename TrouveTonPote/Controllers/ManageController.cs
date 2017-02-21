@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TTPV2.Models;
+using TrouveTonPote.Models;
 
-namespace TTPV2.Controllers
+namespace TrouveTonPote.Controllers
 {
     [Authorize]
     public class ManageController : Controller

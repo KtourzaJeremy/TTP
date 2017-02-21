@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using TrouveTonPote.Models;
 
-namespace TTPV2.Controllers
+namespace TrouveTonPote.Controllers
 {
     public class HomeController : Controller
     {

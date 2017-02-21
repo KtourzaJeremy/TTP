@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace TTPV2.Models
+namespace TrouveTonPote.Models
 {
     public class Event
     {

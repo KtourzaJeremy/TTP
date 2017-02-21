@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace TTPV2.Controllers
+namespace TrouveTonPote.Controllers
 {
     [Serializable]
     internal class CustomException : Exception
