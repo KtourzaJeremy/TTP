@@ -42,6 +42,8 @@
 	
  * __Creately__
 	  * Creately est un outil en ligne qui permet lui aussi de créer des diagrammes UML.
+* __dbdesigner__
+	  * dbdesgner est un outil en ligne qui permet de créer des schéma de base de données en ligne.
 
 
 
@@ -67,17 +69,35 @@
 * [Lien vers notre Trello](https://github.com/KtourzaJeremy/TTP/projects/1)
 
 ### Organisation confrontée à la réalité
-Nous avons rencontré beaucoup de soucis techniques, nous empêchant d'avancer au rythme que nous avions choisi de suivre.
-L'utilisation de Spring en particulier, nous a demandé beaucoup d'efforts de configuration, de paramètrage.
 
-Finalement, nous avons décidé d'implémenter et de coder une application en C# qui soit fonctionnelle. Le laps de temps qui nous restait à donc été dédié entièrement à la production de notre application et de ses fonctionnalités primaires.
+Dès le début du projet, notre organisation "sur le papier" s'est confrontée à la réalité: l'équipe n'était
+jamais réunie au complet pendant les 5 premières semaines !
+De plus, il nous fallait travailler avec un outil non maitrisé, découvert au début du projet pour la totalité
+de l'équipe (Spring). Cet outil nous a demandé beacoup d'efforts de configuration, de paramètrage.
+Un projet type fourni par M. Boutour (même si disponible depuis le début du projet ) nous aurait permis
+de partir sur de meilleures bases, mais nous ne l'avons pas utilisé à temps (il ne restait plus que 2
+semaines).
+Il était également difficile de se coordonner dans les tâches techniques, sans chef de projet avéré.
+Nous n'avons pas réussi à nous concentrer sur "un problème à la fois", et les équipes (Front, Back ou
+MOA) ont rapidement divergées vers des tâches variées, mais pas forcemment adaptées aux
+besoins les plus urgent du projet, et la plupart du temps sans concertation.
+Enfin, il a été difficile de se retrouver pour travailler en semaine ou le week-end en fonction des
+emplois du temps de chacun: nous avions bien identifié ce problème et voulions effectuer le travail à
+l'IUT en majorité. Mais la présence d'un cours au début de la plupart des séances nous laissait peu de
+temps à consacrer au projet. Et le manque de coordination entre nos équipes rendait le peu de temps
+disponible, encore plus court.
+Étant donné que 2 semaines avant la date de rendu du projet, nous n'avions toujours pas résolu ces
+problèmes, nous avons décidé de coder en C#, des membres de l'équipe étant déjà familiers avec ce
+langage et son environnement.
+
 
 
 ## Besoins Utilisateurs
 
-![](Diagramme/DCU.png)
+![](Diagramme/DCUFinal.png)
+Nous avons défini 3 types d'utilisateurs. A noter: un utilisateur a ses besoins, et ceux des utilisateurs le
+précédent (exemple: un administrateur a aussi les besoins d'un utilisateur non-identifié).
 
-Nous avons défini 3 types d'utilisateurs:  
 __Utilisateur non-identifié:__
 * Consulter la page d'accueil
 * Consulter les liste des annonces
@@ -90,32 +110,41 @@ __Utilisateur identifié:__
 * Modifier / Supprimer une annonce
 * S'inscrire à une annonce (un évènement)
 * Se désinscrire d'une annonce (d'un évènement)
+* Inviter des utilisateurs à un évènement
 
 __Administrateur:__
 * Modifier / Supprimer tout compte
 * Modifier / Supprimer toute annonce
+
+## User Story
+_N.B: En raison de la redondance entre les User Story et les Besoins Utilisateurs, nous avons choisi
+de n'en présenter que quelques-uns pour exemple._
+__Utilisateur non-identifié:__
+* En tant qu'utilisateur, je veux avoir accès à la page d'accueil du site afin de le consulter.
+* En tant qu'utilisateur, je veux consulter la liste d'annonces afin de faire mon choix.
+* En tant qu'utilisateur, je veux consulter les détails d'une annonce afin de faire mon choix.
+* En tant qu'utilisateur, je veux créer un compte afin de pouvoir m'inscrire à un évenement / une annonce, ou de créer un évenement / une annonce
+
+## Critères d'acceptation
+
+__Utilisateur non-identifié:__
+* Étant donné que je rentre l'URL du site dans mon navigateur, quand je lance la requête, alors j'arrive sur la page d'accueil du site.
+* Étant donné que je suis sur le site, quand je clique sur le lien "annonces", alors j'arrive sur la liste des annonces.
+* Étant donné que je suis sur la page de liste des annonces, quand je clique sur le titre d'une annonce, alors j'arrive sur la page de détail de l'annonce.
+* Étant donné que je suis sur le site, quand je clique sur le lien "créer un compte", alors j'arrive sur la page de création de compte.
+* Étant donné que je suis sur la page de création de compte, que j'ai renseigné tous les champs en respectant les règles affichées, et que mon adresse email n'a pas déjà été associée à un compte sur le site, quand je clique sur "créer le compte", alors j'arrive sur la page "Mon Compte".
+
 
 ## Tests unitaires
 * Page d'accueil fonctionnelle
 * Liste des annonces génerée
 * Détail d'une annonce accessible
 * Compte présent dans la BD après création
-* Compte absent / modifié dans la BD après suppression
+* Compte absent / modifié dans la BD après suppression / modification
 * Annonce absente / modifiée dans la BD après suppression / modification
 * Participant bien enregistré dans la liste des participants
 * Participant bien supprimé de la liste en cas de désinscription
 * Depuis un compte admin, tous droits bien accordés
-
-## User Story
-
-> Je m'ajoute ou m'enlève à un évènement
-> Je recherche ou consulte les évènements
-> En tant que membre, je peux proposer un/des évènement(s)
-> En tant que membre, je peux supprimer mon ou mes évènements
-> En tant que membre, je peux annuler mon évènement
-> En tant que membre, je peux modifier mon compte
-> En tant qu'utilisateur lambda, je peux créer un compte
-
 
 ## Base de données et structure de notre application
 ![](BD/TTP_BD.png)
