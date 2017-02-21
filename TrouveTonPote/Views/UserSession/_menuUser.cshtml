@@ -1,5 +1,4 @@
-﻿@model TrouveTonPote.Models.Event
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,23 +21,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Créer un nouvel évènement", "NewEvent", "UserSession")</li>
+                    <li>@Html.ActionLink("Créer un nouvel évènement", "newEvent", "UserSession")</li>
                     <li>@Html.ActionLink("Consulter des évènements", "showEvent", "UserSession")</li>
                     <li>@Html.ActionLink("Supprimer un évènement", "deleteEvent", "UserSession")</li>
-                    
+                    <li>@Html.ActionLink("Consulter des évènements", "showEvent", "UserSession")</li>
 
                 </ul>
-
+                
             </div>
         </div>
     </div>
-    <div id="showevent" class="container body-content">
-       
-        
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Trouve Ton Pote</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
-

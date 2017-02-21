@@ -10,34 +10,14 @@ namespace TrouveTonPote.Controllers
 {
     public class HomeController : Controller
     {
-      
+
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-   
-
-        public ActionResult AccueilUser(Models.TTPDBEntities db )
-        {
-            ViewData.Model = db.Events.ToList();
-            return View(db);
-        }
         public ActionResult connexion()
         {
 
@@ -71,35 +51,37 @@ namespace TrouveTonPote.Controllers
 
 
         [HttpGet]
-        public bool checkNotexistUserName(string userName)
+        public ActionResult checkNotexistUserName(string userName)
         {
             Models.User us = new Models.User();
-            int exist = us.checkuserName(userName);
+            var exist = us.checkuserName(userName);
             if (exist > 0)
             {
 
-                return false;
+                return Json("false", JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return true;
+                return Json("/UserSession/AccueilUser", JsonRequestBehavior.AllowGet);
             }
         }
 
         [HttpGet]
-        public bool checkUser(string username, string pswd)
+        public ActionResult checkUser(string username, string pswd)
         {
             Models.User us = new Models.User();
             int exist = us.checkUser(username, pswd);
-            if (exist !=  0)
+            if (exist > 0)
+            {
+                return Json("true", JsonRequestBehavior.AllowGet);
 
-                return true;
-
+            }
             else
-                return false;
-
+            {
+                return Json("false", JsonRequestBehavior.AllowGet);
+            }
         }
 
-     
+
     }
 }

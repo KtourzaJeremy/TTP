@@ -23,15 +23,17 @@ namespace TrouveTonPote.Models
         {
             connexionBD dbconn = new connexionBD();
             // mettre un try catch la
-            dbconn.connexionDataBase("INSERT INTO TTP.dbo.Event_ttp (TitreEvt, LocEvt,DateEvt, PhotoEvt, EtatEvt , NbMaxParticipant) VALUES ('" + titre + "','" + localisation + "','" + date + "','" + etat + "','" + nbMax +"')");
+            dbconn.connexionDataBase("INSERT INTO TTP.dbo.Event_ttp (TitreEvt, LocEvt,DateEvt, PhotoEvt, EtatEvt , NbMaxParticipant) VALUES ('" + titre + "','" + localisation + "','" + date + "','" + etat + "','" + nbMax + "')");
         }
+
+  
 
         public List<string> showAllEvent()
         {
             String ConnectionS = "Data Source=NANA;Initial Catalog=TTP;Integrated Security=SSPI;";
 
             SqlConnection connection = new SqlConnection(ConnectionS);
-            string request = "SELECT TitreEvt, LocEvt,DateEvt, PhotoEvt, EtatEvt , NbMaxParticipant FROM Event_ttp";
+            string request = "SELECT TitreEvt FROM Event_ttp";
             SqlCommand command = new SqlCommand(request, connection);
             command.Connection.Open();
             command.ExecuteNonQuery();
@@ -71,11 +73,11 @@ namespace TrouveTonPote.Models
             String ConnectionS = "Data Source=NANA;Initial Catalog=TTP;Integrated Security=SSPI;";
 
             SqlConnection connection = new SqlConnection(ConnectionS);
-            string request = "DELETE *  FROM TTP.dbo.Event_ttp WHERE IdEvt = " + idEvent ;
+            string request = "DELETE *  FROM TTP.dbo.Event_ttp WHERE IdEvt = " + idEvent;
             SqlCommand command = new SqlCommand(request, connection);
             command.Connection.Open();
             command.ExecuteNonQuery();
-            
+
         }
 
         public void addParticipant(string idEvent)
@@ -91,5 +93,5 @@ namespace TrouveTonPote.Models
 
     }
 
-   
+
 }

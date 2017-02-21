@@ -1,4 +1,12 @@
-﻿@{
+﻿@model TrouveTonPote.Models.User
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+@{
     ViewBag.Title = "connexion";
 }
 
@@ -7,19 +15,18 @@
 <body>
     <div id="errorMessage"></div>
     <div>
-                <form class="form-group">
-                    <h2>
-                        Identifiez-vous 
-                    </h2>
-                    <label for="logID"><strong>Identifiant</strong></label>
-                    <input type="text" class="form-control" placeholder="Identifiant" name="logID" id="logID"/>
+        <form class="form-group">
+            <h2>
+                Identifiez-vous
+            </h2>
+            <label for="logID"><strong>Identifiant</strong></label>
+            <input type="text" class="form-control" placeholder="Identifiant" name="logID" id="logID" />
 
-                    <label for="pass"><strong>Mot de passe</strong></label>
-                    <input type="text" class="form-control" placeholder="Mot de passe" name="pass" id="pass" />
+            <label for="pass"><strong>Mot de passe</strong></label>
+            <input type="text" class="form-control" placeholder="Mot de passe" name="pass" id="pass" />
 
-                    <button class="btn btn-default" id="connexion" value="Se connecter" onclick="checkUserjs()"></button>
-                </form>
-  
+            <button class="btn btn-default" id="connexion" value="Se connecter" onclick="checkUserjs()"></button>
+        </form>
+
     </div>
 </body>
-

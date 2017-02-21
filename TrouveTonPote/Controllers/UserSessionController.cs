@@ -32,5 +32,14 @@ namespace TrouveTonPote.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult ListEvent()
+        {
+            List<string> lsev = new List<string>();
+            Models.Event ev = new Models.Event();
+            lsev = ev.showAllEvent();
+            return Json(lsev, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

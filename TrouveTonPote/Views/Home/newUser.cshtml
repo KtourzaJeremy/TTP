@@ -1,8 +1,16 @@
-﻿
+﻿@model TrouveTonPote.Models.User
+
 @{
-    ViewBag.Title = "newUser";
+    ViewBag.Title = "View";
 }
-@Scripts.Render("~/Scripts/newUser.js")
+
+<h2>View</h2>
+
+
+@{
+    ViewBag.Title = "connexion";
+}
+@Scripts.Render("~/Scripts/checkUser.js")
 
 
 <div id="errorMessage">
@@ -12,44 +20,44 @@
 <div id="confirmSave"> </div>
 
 <div id="formNewUser">
-    
-        <form class="form-group">
-            <h2>
-                Vous êtes nouveau client ?
-            </h2>
 
-            <label for="username"><strong>Identifiant</strong></label>
-            <input type="text" class="form-control" placeholder="Identifiant"  name="username" id="username"/>
+    <form class="form-group">
+        <h2>
+            Vous êtes nouveau client ?
+        </h2>
 
-            <label for="firstname"><strong>Prénom</strong></label>
-            <input type="text" class="form-control" placeholder="Prénom" name="firstname" id="firstname" />
+        <label for="username"><strong>Identifiant</strong></label>
+        <input type="text" class="form-control" placeholder="Identifiant" name="username" id="username" />
 
-            <label for="lastname"><strong>Nom</strong></label>
-            <input type="text" class="form-control" placeholder="Nom" name="lastname" id="lastname" />
+        <label for="firstname"><strong>Prénom</strong></label>
+        <input type="text" class="form-control" placeholder="Prénom" name="firstname" id="firstname" />
 
-            <label for="email"><strong>Email</strong></label>
-            <input type="text" class="form-control" placeholder="Email" name="email" id="email" />
+        <label for="lastname"><strong>Nom</strong></label>
+        <input type="text" class="form-control" placeholder="Nom" name="lastname" id="lastname" />
 
-            <label for="Age"><strong>Age</strong></label>
-            <input type="text" class="form-control" placeholder="Age" name="Age" id="Age"  max="3"/>
+        <label for="email"><strong>Email</strong></label>
+        <input type="text" class="form-control" placeholder="Email" name="email" id="email" />
 
-            <label for="Genre"><strong>Genre</strong></label>
-            <select id="Genre" class="form-control" placeholder="Genre" name="Genre">
-                <option>
-                    Femme
-                </option>
-                <option>
-                    Homme
-                </option>
+        <label for="Age"><strong>Age</strong></label>
+        <input type="text" class="form-control" placeholder="Age" name="Age" id="Age" max="3" />
 
-            </select>
-            <div id="blockmdp">
-                <label for="mdp"><strong>Mot de Passe</strong></label>
-                <input type="password" class="form-control" placeholder="mdp" name="mdp" id="mdp" />
+        <label for="Genre"><strong>Genre</strong></label>
+        <select id="Genre" class="form-control" placeholder="Genre" name="Genre">
+            <option>
+                Femme
+            </option>
+            <option>
+                Homme
+            </option>
 
-                <label for="mdpconf"><strong>Confirmer Mot de Passe</strong></label>
-                <input type="password" class="form-control" placeholder="mdpconf" name="mdpconf" id="mdpconf" />
-            </div>
-            <button  class="btn btn-default" id="inscription" text="S'inscrire" onclick="checkUserNotExist()" ></button>
-        </form>
+        </select>
+        <div id="blockmdp">
+            <label for="mdp"><strong>Mot de Passe</strong></label>
+            <input type="password" class="form-control" placeholder="mdp" name="mdp" id="mdp" />
+
+            <label for="mdpconf"><strong>Confirmer Mot de Passe</strong></label>
+            <input type="password" class="form-control" placeholder="mdpconf" name="mdpconf" id="mdpconf" />
+        </div>
+        <button class="btn btn-default" id="inscription" text="S'inscrire" onclick="checkUserNotExist()"></button>
+    </form>
 </div>
